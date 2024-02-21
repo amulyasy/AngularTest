@@ -1,0 +1,29 @@
+<app-contact-form></app-contact-form>
+<div *ngFor="let contact of this.contacts">
+  <div *ngIf="contact.isEditable">
+  <form>
+    <div class="col-md-12">
+      <label>FirstName :</label>
+      <input type="text" name="firstname" placeholder="FirstName" [(ngModel)]="contact.firstName">
+    </div>
+    <div class="col-md-12">
+      <label>LastName :</label>
+      <input type="text" name="lastName" placeholder="LastName" [(ngModel)]="contact.lastName">
+    </div>
+    <div class="col-md-12">
+      <label>Email :</label>
+      <input type="email" name="email" placeholder="Email" [(ngModel)]="contact.email">
+    </div>
+  </form>
+  <button type="button" class="btn btn-sm btn-primary" (click)="update(contact)">Update</button>
+  <button type="button" class="btn btn-sm btn-primary" (click)="cancel(contact)">Cancel</button>
+</div>
+  <br>
+  <div *ngIf="!contact.isEditable">
+
+  {{contact.firstName}}, {{contact.lastName}}, {{contact.email}} 
+  <button type="button" class="btn btn-sm btn-primary" (click)="edit(contact)">Edit</button>
+  <button type="button" class="btn btn-sm btn-primary" (click)="delete(contact)">Delete</button>
+
+  </div>
+</div>
